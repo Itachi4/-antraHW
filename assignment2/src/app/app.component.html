@@ -1,5 +1,5 @@
 <div>
-  <input [(ngModel)]="searchText" type="text" placeholder="Start typing..." class="form-control" />
+  <input [(ngModel)]="searchText" type="text" placeholder="Type" class="form-control" />
   <ul *ngIf="searchText">
     <li *ngFor="let item of filteredItems">{{ item }}</li>
   </ul>
