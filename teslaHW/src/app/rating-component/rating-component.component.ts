@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-
+import { AverageRatingComponent } from '../average-rating/average-rating.component';
 @Component({
   selector: 'app-rating-component',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AverageRatingComponent],
   templateUrl: './rating-component.component.html',
   styleUrl: './rating-component.component.css'
 })
