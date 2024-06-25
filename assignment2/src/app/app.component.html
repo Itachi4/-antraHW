@@ -1,6 +1,7 @@
 <div>
   <input [(ngModel)]="searchText" type="text" placeholder="Type" class="form-control" />
   <ul *ngIf="searchText">
-    <li *ngFor="let item of filteredItems">{{ item }}</li>
+    <li *ngFor="let item of filteredItems" (click)="fill(item)">{{ item }}</li>
+    <li *ngIf="filteredItems.length === 0">No results found</li>
   </ul>
 </div>
