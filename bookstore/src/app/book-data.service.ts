@@ -18,13 +18,14 @@ export class BookDataService {
 
   private filterBooks(books: Book[]): Book[] {
     return books.filter(book => 
-      book.imageLinks?.thumbnail &&
-      book.title &&
-      book.publisher &&
-      book.publishedDate &&
-      book.description
+      book.volumeInfo.imageLinks?.thumbnail &&
+      book.volumeInfo.title &&
+      book.volumeInfo.publisher &&
+      book.volumeInfo.publishedDate &&
+      book.volumeInfo.description
     );
-  }
+}
+
 
   searchBooks(bookName: string): Observable<Book[]> {
     return this.http.get<ApiResponse>(`${this.baseUrl}${encodeURIComponent(bookName)}`).pipe(
