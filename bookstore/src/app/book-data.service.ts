@@ -17,23 +17,21 @@ export class BookDataService {
 
   constructor(private http: HttpClient) {}
 
-  private filterBooks(books: Book[]): Book[] {
-    return books.filter(book => 
-      book.volumeInfo.imageLinks?.thumbnail &&
-      book.volumeInfo.title &&
-      book.volumeInfo.publisher &&
-      book.volumeInfo.publishedDate &&
-      book.volumeInfo.description
-    );
-}
+  
 
 
   searchBooks(bookName: string): Observable<Book[]> {
     return this.http.get<ApiResponse>(`${this.baseUrl}${encodeURIComponent(bookName)}`).pipe(
-      map(res => this.filterBooks(res.items || []))
+      map(res => res.items?.filter(book => 
+        book.volumeInfo.imageLinks?.thumbnail &&
+        book.volumeInfo.title &&
+        book.volumeInfo.publisher &&
+        book.volumeInfo.publishedDate &&
+        book.volumeInfo.description
+      ) || [])
     );
   }
-
+  
   getDefaultBooks(): Observable<Book[]> {
     const defaults = 'Testing';
     return this.searchBooks(defaults);
