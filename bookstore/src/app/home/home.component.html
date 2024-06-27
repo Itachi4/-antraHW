@@ -8,11 +8,11 @@
       <h2>Search Results:</h2>
       <ul class="list-group">
         <li class="list-group-item" *ngFor="let book of books">
-            <img *ngIf="book.imageLinks?.thumbnail" [src]="book.imageLinks?.thumbnail" alt="{{ book.title }} cover">
-            <h3>{{ book.title }}</h3>
-          <p><strong>Publisher:</strong> {{ book.publisher }}</p>
-          <p><strong>Publish Date:</strong> {{ book.publishedDate }}</p>
-          <p>{{ book.description }}</p>
+            <img *ngIf="book.volumeInfo.imageLinks?.thumbnail" [src]="book.volumeInfo.imageLinks?.thumbnail" alt="{{ book.volumeInfo.title }} cover">
+            <h3>{{ book.volumeInfo.title }}</h3>
+          <p><strong>Publisher:</strong> {{ book.volumeInfo.publisher }}</p>
+          <p><strong>Publish Date:</strong> {{ book.volumeInfo.publishedDate }}</p>
+          <p>{{ book.volumeInfo.description }}</p>
         </li>
       </ul>
     </div>
