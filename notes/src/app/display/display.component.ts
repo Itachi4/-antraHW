@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class DisplayComponent implements OnInit {
   notes: Note[] = [];
   selectedNote: Note | null = null;
-  selectedIndex: boolean = false;
+  selected = false;
   currentId = -1;
 
 
@@ -29,7 +29,7 @@ export class DisplayComponent implements OnInit {
   toggleContent(id:number) {
 
     this.currentId = id;
-    this.selectedIndex = true;
+    this.selected = !this.selected;
   }
 
   onSelect(note: Note) {
