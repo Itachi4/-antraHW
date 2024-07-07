@@ -6,11 +6,10 @@
         <li>
           <div (click)="onSelect(note)">
             {{ note.title }}
-            <div (click)="toggleContent(note.id)" class="content">
+           
                 @if (selected) {
                 <p>{{ note.content }}</p>
                 }
-              </div>
             <button (click)="onDelete(note.id);">[X]</button>
           </div>
         </li>

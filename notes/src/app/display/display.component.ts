@@ -26,13 +26,14 @@ export class DisplayComponent implements OnInit {
     });
   }
 
-  toggleContent(id:number) {
+  toggleContent(title:string) {
 
-    this.currentId = id;
     this.selected = !this.selected;
+    console.log("the selected value is",this.selected)
   }
 
   onSelect(note: Note) {
+    this.selected = !this.selected;
     this.selectedNote = { ...note }; 
   }
 
