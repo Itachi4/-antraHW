@@ -11,4 +11,12 @@ export class LoginService {
     //This function will be used to authenticate the user in the future
     localStorage.setItem("token", Math.random()+"");
   }
+
+  get isLoggedIn(){
+    if(localStorage.getItem("token")){
+      return true;
+
+    }
+    return false;
+  }
 }

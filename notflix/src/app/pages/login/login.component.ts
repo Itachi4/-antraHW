@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -12,16 +13,23 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
- logoURL = LOGO_URL;
- bgURL = BG_IMG_URL;
- email!:string;
- password!:string;
- constructor(private loginService: LoginService, private router: Router){}  
- onSubmit(){
-  console.log(this.email, this.password)
-  this.loginService.login(this.email,this.password);
-  this.router.navigateByUrl('/browse');
- }
+  logoURL = LOGO_URL;
+  bgURL = BG_IMG_URL;
+  email!: string;
+  password!: string;
+  constructor(private loginService: LoginService, private router: Router, private toasterService: ToastrService) { }
 
+  ngOnInit(){
+    if(this.loginService.isLoggedIn){
+      this.router.navigateByUrl('/browse');
+    }
+  }
+  onSubmit() {
+    console.log(this.email, this.password)
+    this.loginService.login(this.email, this.password);
+    this.router.navigateByUrl('/browse');
+  }
+
+ 
 
 }
