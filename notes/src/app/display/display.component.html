@@ -7,7 +7,7 @@
           <div (click)="onSelect(note)">
             {{ note.title }}
            
-                @if (selected) {
+                @if (selected && currentId === note.id) {
                 <p>{{ note.content }}</p>
                 }
             <button (click)="onDelete(note.id);">[X]</button>

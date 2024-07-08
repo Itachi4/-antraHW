@@ -15,7 +15,7 @@ export class DisplayComponent implements OnInit {
   notes: Note[] = [];
   selectedNote: Note | null = null;
   selected = false;
-  currentId = -1;
+  currentId: number = -1;
 
 
   constructor(private noteService: NoteService) {}
@@ -34,6 +34,7 @@ export class DisplayComponent implements OnInit {
 
   onSelect(note: Note) {
     this.selected = !this.selected;
+    this.currentId = note.id;
     this.selectedNote = { ...note }; 
   }
 
