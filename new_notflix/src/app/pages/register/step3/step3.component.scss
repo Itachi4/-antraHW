@@ -1,0 +1,126 @@
+main {
+    width: 100%;
+    height: 80%;
+  }
+
+  .step3content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .step3container {
+    width: 60%;
+    height: 100%;
+    // background-color: rgb(64, 103, 188);
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: space-evenly;
+  }
+
+  .step{
+    font-size: 15px;
+  }
+  .line1{
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .benefitsContainer{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // background-color: rgb(136, 136, 136);
+  }
+
+  .benefit{
+    display: flex;
+  }
+
+  .red{
+      color: rgb(220, 2, 2);
+  }
+
+  hr{
+    margin: 0;
+    // color: aqua;
+  }
+
+  mat-icon{
+    margin-right: 5px;
+  }
+
+  .plansContainer{
+    width: 100%;
+    height: 20%;
+    // background-color: rgb(83, 128, 217);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .planNameBox{
+    width: 100px;
+    height: 100px;
+    // background-color: rgb(104, 115, 137);
+    margin-right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+  }
+
+  .planDetail{
+    width: 100%;
+    height: 7%;
+    // background-color: rgb(251, 136, 251);
+    display: flex;
+  }
+
+  .detailName{
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    color: rgb(84, 84, 84);
+    display: flex;
+    align-items: center;
+    // background-color: rgb(146, 114, 146);
+  }
+
+  .detailValue{
+    width: 170px;
+    height: 100%;
+    margin-right: 30px;
+    color: rgb(84, 84, 84);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // background-color: rgb(108, 40, 108);
+  }
+
+  .blankspace{
+    width: 100%;
+    height: 20%;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .nextButtonContainer{
+    width: 100%;
+    height: 7%;
+    // background-color: rgb(251, 136, 251);
+    display: flex;
+    justify-content: center;
+  }
+
+  button{
+    background-color: red;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    width: 400px;
+    font-size: 20px;
+  }
