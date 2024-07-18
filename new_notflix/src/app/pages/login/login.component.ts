@@ -1,66 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BG_IMG_URL, LOGO_URL } from '../../constants/config';
+import { FormsModule } from '@angular/forms';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { HeaderComponent } from '../../componenets/header/header.component';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
+  imports: [CommonModule, FormsModule,HeaderComponent],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
 })
-export class LoginComponent implements OnInit {
-  loginForm!: FormGroup;
-  hidePassword: boolean = true
+export class LoginComponent {
 
-  constructor(private fb: FormBuilder,private router: Router, private activatedRoute: ActivatedRoute){}
+  bgUrl = BG_IMG_URL;
 
-  ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      email: ["",[Validators.required, Validators.email]],
-      password: ["",[Validators.required, Validators.minLength(6)]]
-    })
-  }
+  email!: string;
+  password!: string;
+  loginService = inject(LoginService);
+  router = inject(Router);
+  toasterService = inject(ToastrService);
 
-  get email(){
-    return this.loginForm.get('email')
-  }
-  get password(){
-    return this.loginForm.get('password')
-  }
-
-  getEmailErrorMessage() {
-    if (this.email?.hasError('required')) {
-      return 'You must enter an email'
-    } else if (this.email?.hasError('email')) {
-      return 'Not a valid email'
-    } else {
-      return ''
+  ngOnInit() {
+    if (this.loginService.isLoggedIn) {
+      this.router.navigateByUrl('/browse');
     }
   }
-
-  getPasswordErrorMessage() {
-    
-    if (this.password?.hasError('required')) {
-      return 'You must enter a password'
-    } else if (this.password?.hasError('minlength')) {
-      return 'Please enter atleast 6 chars'
-    } else {
-      return ''
+  onSubmit() {
+    // validiate email and password
+    if (!this.email || !this.password) {
+      this.toasterService.error('provide email or password');
+      return;
     }
-  }
-
-  onSignIn(){
-    if (this.loginForm.valid){
-      this.router.navigate(['/movieList/movies']);
-    }
-  }
-
-  onSignUpClick(){
-    this.router.navigate(['../register/step1']);
-  }
-
-  onSubmit(){
-    if (this.loginForm.valid){
-      this.router.navigate(['/movieList/movies']);
-    }
+    // if email and password is correct lets login the user
+    this.loginService.login(this.email, this.password);
+    // now we are logged in so we will redirect to our browse page
+    this.toasterService.success('logged in sucessfully.');
+    this.router.navigateByUrl('/browse');
   }
 }
